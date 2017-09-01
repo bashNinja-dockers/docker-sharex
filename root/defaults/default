@@ -1,0 +1,14 @@
+upstream php5-fpm-sock {
+    server 127.0.0.1:9000;
+}
+server {
+    listen 80;
+    server_name _;
+
+    root /config/www/uploadx;
+
+    index index.php;
+
+    include snippets/apps/uploadx.conf;
+    include snippets/php/7.0.conf;
+}
