@@ -2,7 +2,8 @@
 
 # make our folders
 mkdir -p \
-	/config/www/uploadx
+	/config/www/uploadx \
+	/config/data
 
 # install uploadx
 if [ ! -e "/config/www/uploadx/index.php" ]; then
@@ -26,9 +27,10 @@ fi
 
 # Setup Domain
 if [ ! -z "$DOMAIN" ]; then
-	sed -i -e "s/server_name _;/server_name $DOMAIN;/g" /config/nginx/site-confs/default
-	sed -i -e "s/https:\/\/enter.your.site.here.com\/$DOMAIN/g" /config/www/uploadx/lib/config.php
+	sed -i -e "s/server_name.*$/server_name $DOMAIN;/g" /config/nginx/site-confs/default
+	sed -i -e "s/'domain'.*$/'domain' => '$DOMAIN',/g" /config/www/uploadx/lib/config.php
 fi
 # permissions
 chown -R abc:abc \
-	/config /data
+	/config \
+	/data

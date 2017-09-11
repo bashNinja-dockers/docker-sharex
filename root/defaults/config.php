@@ -13,7 +13,7 @@
         ),
 
         'uploads' => array(
-            'location' => '/data/',  //Change this line to reflect your full path to your upload directory
+            'location' => '/config/data/',  //Change this line to reflect your full path to your upload directory
             'viewer_delete' => false,
         ),
 
